@@ -10,11 +10,12 @@ services:
       - MYSQL_DATABASE=chatappdb
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
+      - TZ="Asia/Tokyo"
     ports:
       - "3306:3306"
     volumes:
-      # - ./mysql-data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # 初期化用のクエリを配置
     networks:
       - chat-app-network
 
